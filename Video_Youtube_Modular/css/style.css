@@ -1,0 +1,9 @@
+* {
+	font-family: sans-serif;
+	}
+.video {
+	width: 350px;
+	display: inline-block;
+	margin: 15px;
+	vertical-align: top;
+}
