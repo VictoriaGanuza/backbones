@@ -61,7 +61,7 @@ define([
       // Oh, we forgot this AngryCat...let's add it now!
       cats.add([new catModel({ name: 'Cranky Cat', image_path: 'images/cat4.jpg' })]);
 
-      var catsListView = new CatsListView({ collection: {} } );
+      var catsListView = new CatsListView({ collection: cats } );
           catsListView.render();
       });
       Backbone.history.start();

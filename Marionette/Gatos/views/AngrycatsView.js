@@ -10,7 +10,7 @@ define([
 
    var AngryCatsView = Backbone.View.extend({
 
-	el: $("table#angry_cats"),
+	el: $("div#contents"),
 	template: _.template(ListTemplate),
 
 	events: {
@@ -37,17 +37,19 @@ define([
 	// Show it!
 	render: function() {
 		console.log("en el render de Lista de gatos");
-	    var header = this.$el.find("tr.header").clone();
+		this.$el.html(this.template());
+		var header = this.$el.find("tr.header").clone();
 	    console.log(this.template());
 	    console.log("header");
 	    console.log(header);
 	    $("table#angry_cats > tbody:last").html('').append(header);
 
 	    console.log('this.collection');
-	    console.log(CatsCollection);
+	    console.log(this.collection);
 
 	    this.collection.sort();
 	    this.collection.each(function(cat) {
+	    	console.log("por cada gato");
 		var catView = new SingleCatView({model: cat});
 		$("table#angry_cats > tbody:last").append(catView.render().el);
 	    });

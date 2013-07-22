@@ -8,7 +8,7 @@ define([
 ], function($, _, Backbone, CatModels, CatCollection, catTemplate){
  
     var AngryCatView = Backbone.View.extend({
-
+    	    	
 	// This is responsible for automatically updating the UI 
 	// in response to changes in the model
 	initialize: function() {
@@ -20,13 +20,17 @@ define([
 	className: 'angry_cat',
 
 	render: function() {
-            $(this.el).html(_.template(catTemplate, {
-		id:         this.model.cid,
-		rank:       this.model.get('rank'),
-		name:       this.model.get('name'),
-		image_path: this.model.get('image_path')
-            }));
-            return this;
+		var variables = {
+			id:         this.model.cid,
+		    rank:       this.model.get('rank'),
+		    name:       this.model.get('name'),
+		    image_path: this.model.get('image_path')
+		};
+
+		var compilerTemplate = _.template(catTemplate, variables)
+        
+        this.$el.html(compilerTemplate);
+        return this;
 	}
     });
 return AngryCatView;
